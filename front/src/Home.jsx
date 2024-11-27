@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import PersonFetch from "./PersonFetch";
-import TransactionFetch from "./TransactionFetch";
+import BookFetch from "./BookFetch";
 
 class Home extends Component {
   /**
@@ -22,15 +21,13 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    PersonFetch.getAll().then((/**@type {any}*/ data) => {
+    BookFetch.getAll().then((/**@type {any}*/ data) => {
       this.setState({
         people: data.people.length,
         balances: [data.totalBalance, data.totalRevenue, data.totalExpenses],
       });
     });
-    TransactionFetch.getCount().then((data) => {
-      this.setState({ transactions: data.count });
-    });
+
     /**@type {any}*/
     var table = document.querySelector(".main");
     /**@type {any}*/

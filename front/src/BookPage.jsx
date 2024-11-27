@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PersonFetch from "./PersonFetch";
+import PersonFetch from "./BookFetch";
 import TrashIcon from "./Icons/TrashIcon";
 import EditIcon from "./Icons/EditIcon";
 import RefreshIcon from "./Icons/RefreshIcon";
@@ -9,8 +9,8 @@ export class PersonPage extends Component {
   constructor(/**@type {any}*/ props) {
     super(props);
     this.state = {
-      people: /**@type {import("./types").Livro[]}*/ ([
-        { id: 0, nome: "   -   " },
+      books: /**@type {import("./types").Livro[]}*/ ([
+        { id: 0, titulo: "   -   " },
       ]),
       children: [],
       selected: /**@type {number[]}*/ ([]),
@@ -326,7 +326,7 @@ export class PersonPage extends Component {
               opacity: "1",
             }}>
             {/* ITEM ROW ---------------------------------- */}
-            {this.state.people.map((item) => (
+            {this.state.books.map((item) => (
               <div
                 className="row"
                 id={"row" + item.id}

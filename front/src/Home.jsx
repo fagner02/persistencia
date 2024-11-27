@@ -4,6 +4,9 @@ import PersonFetch from "./PersonFetch";
 import TransactionFetch from "./TransactionFetch";
 
 class Home extends Component {
+  /**
+   * @param {any} props
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -19,7 +22,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    PersonFetch.getAll().then((data) => {
+    PersonFetch.getAll().then((/**@type {any}*/ data) => {
       this.setState({
         people: data.people.length,
         balances: [data.totalBalance, data.totalRevenue, data.totalExpenses],
@@ -28,7 +31,9 @@ class Home extends Component {
     TransactionFetch.getCount().then((data) => {
       this.setState({ transactions: data.count });
     });
+    /**@type {any}*/
     var table = document.querySelector(".main");
+    /**@type {any}*/
     var showTable = document.querySelector(".main-container>:nth-child(6)");
     table.style.height = table.clientHeight + "px";
     showTable.style.height = showTable.clientHeight + "px";
@@ -39,11 +44,13 @@ class Home extends Component {
   }
 
   async setAnimation() {
+    /**@type {any}*/
     var table = document.querySelector(".main");
     table.style.overflow = "hidden";
     table.style.height = "0px";
 
     setTimeout(() => {
+      /**@type {any}*/
       var showTable = document.querySelector(
         ".main-container>:nth-child(6)>div"
       );

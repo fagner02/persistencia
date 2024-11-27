@@ -28,3 +28,9 @@ class Livro(BaseModel):
     ano: int
     genero: str
     editora: str
+
+
+@app.post("/livros")
+def inserir(livro: Livro):
+    data.loc[len(data)] = [a[1] for a in livro]
+    data.to_csv(path)

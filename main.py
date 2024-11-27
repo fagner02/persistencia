@@ -1,11 +1,25 @@
 from http import HTTPStatus
+from typing import List
 from fastapi import FastAPI, Response
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import pandas as pd
 import os
 
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 path = "dados.csv"
+
+
+class DeleteMultipleRequest(BaseModel):
+    ids: List[int]
 
 
 class Livro(BaseModel):
@@ -57,8 +71,24 @@ def update(id: int, livro: Livro):
 
 @app.delete("/livros/{id}")
 def delete(id: int):
-    indexes = data["id"].loc[lambda x: x == id]
+    indexes = data["id"].loc[lambda x: x == id].index
     if indexes.size == 0:
+        return Response(status_code=HTTPStatus.NOT_FOUND)
+    data.drop(index=indexes, inplace=True)
+    data.to_csv(path, index=False)
+    return Response(status_code=HTTPStatus.NO_CONTENT)
+
+
+@app.delete("/livros")
+def deleteMultiple(request: DeleteMultipleRequest):
+    indexes = []
+    i = 0
+    for a in data["id"]:
+        print(a)
+        if a in request.ids:
+            indexes.append(i)
+        i += 1
+    if len(indexes) == 0:
         return Response(status_code=HTTPStatus.NOT_FOUND)
     data.drop(index=indexes, inplace=True)
     data.to_csv(path, index=False)

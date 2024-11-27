@@ -1,17 +1,15 @@
 import React, { Component } from "react";
-import PersonFetch from "./BookFetch";
+import BookFetch from "./BookFetch";
 import TrashIcon from "./Icons/TrashIcon";
 import EditIcon from "./Icons/EditIcon";
 import RefreshIcon from "./Icons/RefreshIcon";
 import CheckIcon from "./Icons/CheckIcon";
 
-export class PersonPage extends Component {
+export class BookPage extends Component {
   constructor(/**@type {any}*/ props) {
     super(props);
     this.state = {
-      books: /**@type {import("./types").Livro[]}*/ ([
-        { id: 0, titulo: "   -   " },
-      ]),
+      books: /**@type {import("./types").Livro[]}*/ ([]),
       children: [],
       selected: /**@type {number[]}*/ ([]),
     };
@@ -26,9 +24,9 @@ export class PersonPage extends Component {
     { name: "editora", type: "text" },
   ];
   refresh() {
-    PersonFetch.getAll().then((res) => {
+    BookFetch.getAll().then((res) => {
       if (!this.willUnmount) {
-        this.setState({ people: res });
+        this.setState({ books: res });
       }
     });
   }
@@ -99,7 +97,7 @@ export class PersonPage extends Component {
     }
   }
 
-  openAddPerson() {
+  openAddBook() {
     const detailMenu = /**@type {HTMLElement}*/ (
       document.querySelector(".container :nth-child(1)")
     );
@@ -128,7 +126,7 @@ export class PersonPage extends Component {
     }, 400);
   }
 
-  closeAddPerson() {
+  closeAddBook() {
     const addMenu = /**@type {HTMLElement}*/ (
       document.getElementsByClassName("container")[1]
     );
@@ -285,15 +283,15 @@ export class PersonPage extends Component {
               <RefreshIcon size="20px" color="white"></RefreshIcon>
             </button>
             <button
-              id="add-person"
+              id="add-book"
               style={{ margin: "0 10px" }}
-              onClick={() => this.openAddPerson()}>
-              Add Person
+              onClick={() => this.openAddBook()}>
+              Add Book
             </button>
             <button
               id="delete-selected"
               onClick={() => {
-                PersonFetch.delete(this.state.selected).then(() => {
+                BookFetch.delete(this.state.selected).then(() => {
                   this.refresh();
                   this.setState({ selected: [] });
                 });
@@ -454,7 +452,7 @@ export class PersonPage extends Component {
                             style={{ width: "100%" }}
                             defaultValue={
                               Object.entries(item).find(
-                                (x) => x[0] == p.name
+                                (x) => x[0] === p.name
                               )?.[1]
                             }
                           />
@@ -487,7 +485,7 @@ export class PersonPage extends Component {
                               ];
                             });
 
-                            PersonFetch.put(
+                            BookFetch.put(
                               Object.fromEntries(entries),
                               item.id
                             ).then(() => {
@@ -518,7 +516,7 @@ export class PersonPage extends Component {
                         marginRight: "10px",
                       }}
                       onClick={() => {
-                        PersonFetch.deleteById(item.id).then((res) => {
+                        BookFetch.deleteById(item.id).then((res) => {
                           this.refresh();
                         });
                       }}>
@@ -555,7 +553,7 @@ export class PersonPage extends Component {
               <input
                 type={p.type}
                 name={p.name}
-                defaultValue={p.type == "number" ? "0" : "test"}
+                defaultValue={p.type === "number" ? "0" : "test"}
               />
             </div>
           ))}
@@ -567,7 +565,7 @@ export class PersonPage extends Component {
             }}>
             <button
               onClick={() => {
-                this.closeAddPerson();
+                this.closeAddBook();
               }}>
               Cancel
             </button>
@@ -582,10 +580,10 @@ export class PersonPage extends Component {
                     p.type === "number" ? parseFloat(value) : value,
                   ];
                 });
-                PersonFetch.post(Object.fromEntries(entries)).then(() =>
+                BookFetch.post(Object.fromEntries(entries)).then(() =>
                   this.refresh()
                 );
-                this.closeAddPerson();
+                this.closeAddBook();
               }}>
               Add
             </button>
@@ -596,4 +594,4 @@ export class PersonPage extends Component {
   }
 }
 
-export default PersonPage;
+export default BookPage;

@@ -1,6 +1,5 @@
 import "./App.css";
-import TransactionPage from "./TransactionPage";
-import PersonPage from "./BookPage";
+import BookPage from "./BookPage";
 import Home from "./Home";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import React from "react";
@@ -12,17 +11,13 @@ function App() {
         <Link className="tab-link" to="/">
           Home
         </Link>
-        <Link className="tab-link" to="/People">
-          People
-        </Link>
-        <Link className="tab-link" to="/Transactions">
-          Transactions
+        <Link className="tab-link" to="/Livros">
+          Livros
         </Link>
       </div>
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/Transactions" element={<TransactionPage />}></Route>
-        <Route path="/People" element={<PersonPage />}></Route>
+        <Route path="/Livros" element={<BookPage />}></Route>
       </Routes>
     </Router>
   );

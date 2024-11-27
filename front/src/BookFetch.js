@@ -4,7 +4,6 @@ const PersonFetch = {
       .then(async (response) => {
         let temp = [];
         temp = await response.json();
-        console.log(temp);
         return temp;
       })
       .catch((error) => {
@@ -26,7 +25,6 @@ const PersonFetch = {
     return result;
   },
   post: (/**@type {import("./types.js").Livro}*/ data) => {
-    console.log(data);
     return fetch(process.env.REACT_APP_API + "livros", {
       body: JSON.stringify(data),
       method: "POST",

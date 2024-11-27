@@ -12,7 +12,7 @@ class Home extends Component {
       size: 1,
       posx: -25,
       opacity: 0,
-      people: 0,
+      bools: 0,
       transactions: 0,
       balances: [0, 0, 0],
       height: 0,
@@ -23,7 +23,7 @@ class Home extends Component {
   componentDidMount() {
     BookFetch.getAll().then((/**@type {any}*/ data) => {
       this.setState({
-        people: data.people.length,
+        bools: data.length,
         balances: [data.totalBalance, data.totalRevenue, data.totalExpenses],
       });
     });
@@ -51,7 +51,6 @@ class Home extends Component {
       var showTable = document.querySelector(
         ".main-container>:nth-child(6)>div"
       );
-      console.log(showTable);
       showTable.style.top = "0px";
       setTimeout(() => {
         this.setState({ posx: 0, opacity: 1 });
@@ -133,8 +132,8 @@ class Home extends Component {
                 padding: "10px",
                 backgroundColor: "white",
               }}>
-              <div>People: {this.state.people}</div>
-              <div>Transactions: {this.state.transactions}</div>
+              <div>Livros: {this.state.bools}</div>
+
               <div
                 style={{
                   border: "solid 1px black",
@@ -150,15 +149,11 @@ class Home extends Component {
             </div>
             <div className="link-buttons">
               <button>
-                <Link className="tab-link" to="/People">
-                  People &gt;
+                <Link className="tab-link" to="/Livros">
+                  Livros &gt;
                 </Link>
               </button>
-              <button>
-                <Link className="tab-link" to="/Transactions">
-                  Transactions &gt;
-                </Link>
-              </button>
+
               <h3
                 style={{
                   transition: "all 0.5s ease",

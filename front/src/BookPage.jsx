@@ -36,8 +36,6 @@ export class BookPage extends Component {
     this.refresh();
   }
 
-  componentDidUpdate() {}
-
   componentWillUnmount() {
     this.willUnmount = true;
   }
@@ -84,17 +82,23 @@ export class BookPage extends Component {
     icon.style.rotate = "45deg";
     this.state.selected.splice(this.state.selected.indexOf(id), 1);
     if (this.state.selected.length === 0) {
-      button.forEach((x) => {
-        x.style.scale = "0";
-        x.style.opacity = "0";
-      });
+      this.hideSelectControls();
     }
   }
-
+  hideSelectControls() {
+    const button = /**@type {NodeListOf<HTMLElement>}*/ (
+      document.querySelectorAll(`#delete-selected,#uncheck`)
+    );
+    button.forEach((x) => {
+      x.style.scale = "0";
+      x.style.opacity = "0";
+    });
+  }
   uncheckAll() {
     while (this.state.selected.length > 0) {
       this.checkBox(this.state.selected[0]);
     }
+    this.hideSelectControls();
   }
 
   openAddBook() {
@@ -294,6 +298,7 @@ export class BookPage extends Component {
                 BookFetch.delete(this.state.selected).then(() => {
                   this.refresh();
                   this.setState({ selected: [] });
+                  this.hideSelectControls();
                 });
               }}>
               Delete

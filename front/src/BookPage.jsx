@@ -367,7 +367,9 @@ export class BookPage extends Component {
                         .slice(0, 3)
                         .map(([key, value]) => (
                           <div className="property" key={key}>
-                            <h6>{key}:</h6>
+                            <h6 style={{ textTransform: "capitalize" }}>
+                              {key}:
+                            </h6>
                             <p>{value}</p>
                           </div>
                         ))}
@@ -421,7 +423,7 @@ export class BookPage extends Component {
                       .map((p) => (
                         <div className="detail-row" key={p[0]}>
                           {/* DETAIL ROWS --------------------------------- */}
-                          <p>
+                          <p style={{ textTransform: "capitalize" }}>
                             {p[0]}: {p[1]}
                           </p>
                         </div>

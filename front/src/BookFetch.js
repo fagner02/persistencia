@@ -1,5 +1,10 @@
+// @ts-nocheck
+import JSZip from "jszip"
+
 const PersonFetch = {
+  // @ts-ignore
   getAll: /**@return {Promise<import("./types").Livro[]>}*/ async () => {
+    // @ts-ignore
     return await fetch(process.env.REACT_APP_API + "livros")
       .then(async (response) => {
         let temp = [];
@@ -10,9 +15,11 @@ const PersonFetch = {
         return [];
       });
   },
+  // @ts-ignore
   getById: /**@return {Promise<import("./types").Livro?>}*/ async (
     /**@type {number}*/ id
   ) => {
+    // @ts-ignore
     var result = await fetch(process.env.REACT_APP_API + "livros/" + id)
       .then(async (response) => {
         let temp = {};
@@ -25,6 +32,7 @@ const PersonFetch = {
     return result;
   },
   post: (/**@type {import("./types.js").Livro}*/ data) => {
+    // @ts-ignore
     return fetch(process.env.REACT_APP_API + "livros", {
       body: JSON.stringify(data),
       method: "POST",
@@ -33,7 +41,9 @@ const PersonFetch = {
       },
     });
   },
+  // @ts-ignore
   delete: async (/**@type {number[]}*/ ids) => {
+    // @ts-ignore
     await fetch(process.env.REACT_APP_API + "livros", {
       method: "DELETE",
       body: JSON.stringify({ ids: ids }),
@@ -43,7 +53,9 @@ const PersonFetch = {
     });
   },
 
+  // @ts-ignore
   deleteById: /**@param {number} id*/ async (id) => {
+    // @ts-ignore
     await fetch(`${process.env.REACT_APP_API}livros/${id}`, {
       method: "DELETE",
     });
@@ -53,7 +65,9 @@ const PersonFetch = {
      * @param {import("./types.js").Livro} data
      * @param {number} id
      */
+    // @ts-ignore
     async (data, id) => {
+      // @ts-ignore
       await fetch(`${process.env.REACT_APP_API}livros/${id}`, {
         method: "PUT",
         body: JSON.stringify(data),

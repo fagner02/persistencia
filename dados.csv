@@ -99,3 +99,103 @@ id,titulo,autor,ano,genero,editora
 98,Or carry treat,Brandon Torres,2004,Ficção,Various
 99,Hotel direction,John Watson,1992,Romance,Look
 100,Probably field,Tyler Adams,1966,Ficção,Tonight
+101,Harry Potter e a Pedra Filosofal,J.K. Rowling,1997,Fantasia,Rocco
+102,Harry Potter e a Câmara Secreta,J.K. Rowling,1998,Fantasia,Rocco
+103,Harry Potter e o Prisioneiro de Azkaban,J.K. Rowling,1999,Fantasia,Rocco
+104,Harry Potter e o Cálice de Fogo,J.K. Rowling,2000,Fantasia,Rocco
+105,Harry Potter e a Ordem da Fênix,J.K. Rowling,2003,Fantasia,Rocco
+106,Harry Potter e o Enigma do Príncipe,J.K. Rowling,2005,Fantasia,Rocco
+107,Harry Potter e as Relíquias da Morte,J.K. Rowling,2007,Fantasia,Rocco
+108,Divergente,Veronica Roth,2011,Ficção Científica,HarperCollins
+109,Insurgente,Veronica Roth,2012,Ficção Científica,HarperCollins
+110,Convergente,Veronica Roth,2013,Ficção Científica,HarperCollins
+111,Jogos Vorazes,Suzanne Collins,2008,Ficção Científica,Seymour Lawrence
+112,Jogos Vorazes - Em Chamas,Suzanne Collins,2009,Ficção Científica,Seymour Lawrence
+113,Jogos Vorazes - A Esperança,Suzanne Collins,2010,Ficção Científica,Seymour Lawrence
+114,Orgulho e Preconceito,Jane Austen,1813,Romance,Thomas Davison
+115,O Grande Gatsby,F. Scott Fitzgerald,1925,Romance,Charles Scribner's Sons
+116,Emma,Jane Austen,1815,Romance,John Murray
+117,Como Eu Era Antes de Você,Jojo Moyes,2012,Romance,Intrínseca
+118,A Culpa é das Estrelas,John Green,2012,Romance,WMF Martins
+119,Noites de Tormenta,Nicholas Sparks,1996,Romance,Warner Books
+120,Sentimentos e Sensibilidade,Jane Austen,1811,Romance,Thomas Davison
+121,Um Amor para Recordar,Nicholas Sparks,1999,Romance,Warner Books
+122,Invocação do Mal,Gerald Brittle,2002,Paranormal,Warner Books
+123,Crepúsculo,Stephenie Meyer,2005,Romance,Little
+124,Anjos e Demônios,Dan Brown,2000,Thriller,Anchor Books
+125,O Código Da Vinci,Dan Brown,2003,Thriller,Anchor Books
+126,O Menino do Pijama Listrado,John Boyne,2006,Drama,Scholastic
+127,A Casa dos Espíritos,Isabel Allende,1982,Romance,Editorial Planeta
+128,O Silêncio dos Inocentes,Thomas Harris,1988,Thriller,St. Martin's Press
+129,A Mulher de Branco,Wilkie Collins,1859,Romance,Collins
+130,Drácula,Bram Stoker,1897,Paranormal,Archibald Constable and Co.
+131,Os Sete Maridos de Evelyn Hugo,Taylor Jenkins Reid,2017,Romance,Simon & Schuster
+132,O Iluminado,Stephen King,1977,Paranormal,DoubleDay
+133,Exorcismo,Thomas B. Allen,1993,Paranormal,New York Times Books
+134,It - A Coisa,Stephen King,1986,Terror,Viking
+135,Um dia,David Nicholls,2009,Romance,Hodder & Stoughton
+136,As Vantagens de Ser Invisível,Stephen Chbosky,1999,Drama,Pocket Books
+137,As Crônicas de Nárnia,C.S. Lewis,1950,Fantasia,Geoffrey Bles
+138,As Crônicas de Nárnia: O Leão a Feiticeira e o Guarda-Roupa,C.S. Lewis,1950,Fantasia,Geoffrey Bles
+139,As Crônicas de Nárnia: O Cavalo e seu Menino,C.S. Lewis,1954,Fantasia,Geoffrey Bles
+140,As Crônicas de Nárnia: O Príncipe Caspian,C.S. Lewis,1951,Fantasia,Geoffrey Bles
+141,As Crônicas de Nárnia: A Viagem do Peregrino da Alvorada,C.S. Lewis,1952,Fantasia,Geoffrey Bles
+142,As Crônicas de Nárnia: A Cadeira de Prata,C.S. Lewis,1953,Fantasia,Geoffrey Bles
+143,As Crônicas de Nárnia: O Enigma do Leão,C.S. Lewis,1956,Fantasia,Geoffrey Bles
+144,Extraordinário,R.J. Palacio,2012,Drama,Intrínseca
+145,Fallen,Lauren Kate,2009,Fantasia,Galera Record
+146,Os Instrumentos Mortais,Cassandra Clare,2007,Fantasia,Simon & Schuster
+147,Os Instrumentos Mortais: Cidade dos Ossos,Cassandra Clare,2007,Fantasia,Simon & Schuster
+148,Os Instrumentos Mortais: Cidade das Cinzas,Cassandra Clare,2008,Fantasia,Simon & Schuster
+149,Os Instrumentos Mortais: Cidade de Vidro,Cassandra Clare,2009,Fantasia,Simon & Schuster
+150,Os Instrumentos Mortais: Cidade dos Anjos Caídos,Cassandra Clare,2011,Fantasia,Simon & Schuster
+151,Os Instrumentos Mortais: Cidade das Almas Perdidas,Cassandra Clare,2012,Fantasia,Simon & Schuster
+152,Os Instrumentos Mortais: Cidade do Fogo Celestial,Cassandra Clare,2014,Fantasia,Simon & Schuster
+153,Os Instrumentos Mortais: As Peças Infernais,Cassandra Clare,2010,Fantasia,Simon & Schuster
+154,Os Instrumentos Mortais: Anjo Mecânico,Cassandra Clare,2010,Fantasia,Simon & Schuster
+155,Os Instrumentos Mortais: Príncipe Mecânico,Cassandra Clare,2011,Fantasia,Simon & Schuster
+156,Os Instrumentos Mortais: Princesa Mecânica,Cassandra Clare,2013,Fantasia,Simon & Schuster
+157,Os Instrumentos Mortais: As Crônicas de Bane,Cassandra Clare,2011,Fantasia,Simon & Schuster
+158,Os Instrumentos Mortais: As Crônicas de Bane: O Que Realmente Aconteceu no Peru,Cassandra Clare,2013,Fantasia,Simon & Schuster
+159,Os Instrumentos Mortais: As Crônicas de Bane: O Que Realmente Aconteceu em Londres,Cassandra Clare,2013,Fantasia,Simon & Schuster
+160,Os Instrumentos Mortais: As Crônicas de Bane: O Que Realmente Aconteceu na América Vitoriana,Cassandra Clare,2013,Fantasia,Simon & Schuster
+161,Os Instrumentos Mortais: As Crônicas de Bane: O Que Realmente Aconteceu na Revolução Francesa,Cassandra Clare,2013,Fantasia,Simon & Schuster
+162,Os Instrumentos Mortais: As Crônicas de Bane: O Que Realmente Aconteceu na Era do Ferro,Cassandra Clare,2013,Fantasia,Simon & Schuster
+163,Percy Jackson e os Olimpianos,Rick Riordan,2005,Fantasia,Hyperion Books
+164,Percy Jackson e os Olimpianos: O Ladrão de Raios,Rick Riordan,2005,Fantasia,Hyperion Books
+165,Percy Jackson e os Olimpianos: O Mar de Monstros,Rick Riordan,2006,Fantasia,Hyperion Books
+166,Percy Jackson e os Olimpianos: A Maldição do Titã,Rick Riordan,2007,Fantasia,Hyperion Books
+167,Percy Jackson e os Olimpianos: O Último Olimpiano,Rick Riordan,2009,Fantasia,Hyperion Books
+168,Os Heróis do Olimpo: O Herói Perdido,Rick Riordan,2010,Fantasia,Hyperion Books
+169,Os Heróis do Olimpo: O Filho de Netuno,Rick Riordan,2011,Fantasia,Hyperion Books
+170,Os Heróis do Olimpo: A Marca de Atena,Rick Riordan,2012,Fantasia,Hyperion Books
+171,Os Heróis do Olimpo: A Casa de Hades,Rick Riordan,2013,Fantasia,Hyperion Books
+172,Os Heróis do Olimpo: O Sangue do Olimpo,Rick Riordan,2014,Fantasia,Hyperion Books
+173,Percy Jackson e os Olimpianos: Os Arquivos do Semideus,Rick Riordan,2009,Fantasia,Hyperion Books
+174,Percy Jackson e os Olimpianos: Os Arquivos do Semideus: Guia do Mundo dos Deuses,Rick Riordan,2010,Fantasia,Hyperion Books
+175,Percy Jackson e os Olimpianos: Os Arquivos do Semideus: Guia da Série,Rick Riordan,2010,Fantasia,Hyperion Books
+176,A Cabana,William P. Young,2007,Drama,WMF Martins
+177,A Guerra dos Tronos,George R.R. Martin,1996,Fantasia,HarperCollins
+178,A Fúria dos Reis,George R.R. Martin,1998,Fantasia,HarperCollins
+179,As Crônicas de Gelo e Fogo: O Festim dos Corvos,George R.R. Martin,2005,Fantasia,HarperCollins
+180,As Crônicas de Gelo e Fogo: A Dança dos Dragões,George R.R. Martin,2011,Fantasia,HarperCollins
+181,O Hobbit,J.R.R. Tolkien,1937,Fantasia,Houghton Mifflin
+182,Senhor dos Anéis: A Sociedade do Anel,J.R.R. Tolkien,1954,Fantasia,Houghton Mifflin
+183,Senhor dos Anéis: As Duas Torres,J.R.R. Tolkien,1954,Fantasia,Houghton Mifflin
+184,Senhor dos Anéis: O Retorno do Rei,J.R.R. Tolkien,1955,Fantasia,Houghton Mifflin
+185,O Nome do Vento,Patrick Rothfuss,2007,Fantasia,DAW Books
+186,O Temor do Sábio,Patrick Rothfuss,2011,Fantasia,DAW Books
+187,O Problema dos Três Corpos,Liu Cixin,2008,Ficção Científica,Chongqing Publishing Group
+188,A Mão Esquerda da Escuridão,Ursula K. Le Guin,1969,Ficção Científica,Planet
+189,1984,George Orwell,1949,Ficção Científica,Secker & Warburg
+190,A Máquina do Tempo,H.G. Wells,1895,Ficção Científica,Heinemann
+191,O Guia do Mochileiro das Galáxias,Douglas Adams,1979,Ficção Científica,Pan Books
+192,O Hobbit: A Jornada Inesperada, J.R.R. Tolkien,1937,Fantasia,HarperCollins
+193,A Bússola de Ouro,Philip Pullman,1995,Fantasia,Scholastic Press
+194,As Sombras de Grey, E.L. James,2011,Romance, Vintage Books
+195,Cinquenta Tons Mais Escuros, E.L. James,2012,Romance, Vintage Books
+196,Cinquenta Tons de Liberdade, E.L. James,2012,Romance, Vintage Books
+197,As Cinquenta Sombras de Grey Contadas por Christian, E.L. James,2015,Romance, Vintage Books
+198,As Cinquenta Sombras de Grey Mais Negras Contadas por Christian, E.L. James,2017,Romance, Vintage Books
+199,As Cinquenta Sombras de Grey Mais Livres Contadas por Christian, E.L. James,2021,Romance, Vintage Books
+200,As Cinquenta Sombras de Grey Mais Escuras Contadas por Christian, E.L. James,2021,Romance, Vintage Books

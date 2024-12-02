@@ -1,10 +1,13 @@
+import csv
 from http import HTTPStatus
 from typing import List
 from fastapi import FastAPI, Response
+from starlette.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import pandas as pd
 import os
+import zipfile
 
 app = FastAPI()
 app.add_middleware(
@@ -93,3 +96,35 @@ def deleteMultiple(request: DeleteMultipleRequest):
     data.drop(index=indexes, inplace=True)
     data.to_csv(path, index=False)
     return Response(status_code=HTTPStatus.NO_CONTENT)
+
+@app.get("/livros/quantidade")
+def quantidade():
+    try:
+        df = pd.read_csv(path)  
+        return {"quantidade": len(df)}
+    except Exception as e:
+        return Response(status_code=HTTPStatus.INTERNAL_SERVER_ERROR, content=str(e))
+
+@app.get("/livros/compactar")
+def compactar():
+    try:
+        zip_file = 'dados.zip'
+        with zipfile.ZipFile(zip_file, 'w') as zip:
+            zip.write(path, arcname=os.path.basename(path))
+            return FileResponse(zip_file, media_type='application/zip', filename=zip_file)
+    except Exception as e:
+        return Response(status_code=HTTPStatus.INTERNAL_SERVER_ERROR, content=str(e))
+
+@app.get("/livros/filtrar")
+def filtrar(genero: str = None, autor: str = None):
+    try: 
+        with open(path, mode='r', newline='', encoding='utf-8') as file:
+            reader = csv.reader(file)
+            filtrados = [
+                row for row in reader if 
+                (genero is None or row[4].strip().lower() == genero.strip().lower()) and 
+                (autor is None or row[2].strip().lower() == autor.strip().lower()) 
+            ]
+            return {"filtrados": filtrados}
+    except Exception as e:
+        return Response(status_code=HTTPStatus.INTERNAL_SERVER_ERROR, content=str(e))

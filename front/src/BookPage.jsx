@@ -4,6 +4,7 @@ import TrashIcon from "./Icons/TrashIcon";
 import EditIcon from "./Icons/EditIcon";
 import RefreshIcon from "./Icons/RefreshIcon";
 import CheckIcon from "./Icons/CheckIcon";
+import JSZip from "jszip";
 
 export class BookPage extends Component {
   constructor(/**@type {any}*/ props) {

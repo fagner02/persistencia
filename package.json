@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "jszip": "^3.10.1",
-    "papaparse": "^5.4.1",
-    "react-scripts": "^5.0.1"
-  }
-}

@@ -1,5 +1,5 @@
 // @ts-nocheck
-import JSZip from "jszip"
+import { createElement } from "react";
 
 const PersonFetch = {
   // @ts-ignore
@@ -75,6 +75,33 @@ const PersonFetch = {
           "Content-Type": "application/json",
         },
       });
+    },
+    getQtd: async () => {
+      const qtd = await fetch(`${process.env.REACT_APP_API}livros/quantidade`, {
+        method: "GET",
+      });
+      return ((await qtd.json()).quantidade);
+    },
+    compactar: async () => {
+      const zip = await fetch(`${process.env.REACT_APP_API}livros/compactar`, {
+        method: "GET",
+      });
+      const download = document.createElement("a");
+      download.setAttribute("href", URL.createObjectURL(await zip.blob()));
+      download.setAttribute("download", "dados.zip");
+      return (download.click());
+    },
+    filtrarLivros: async (id, titulo, autor, genero, editora, ano) => {
+      let query = id == "" ? "" : `id=${id}&`;
+      query += titulo == "" ? "" : `titulo=${titulo}&`;
+      query += autor == "" ? "" : `autor=${autor}&`;
+      query += genero == "" ? "" : `genero=${genero}&`;
+      query += editora == "" ? "" : `editora=${editora}&`;
+      query += ano == "" ? "" : `ano=${ano}&`;
+      const livros = await fetch(`${process.env.REACT_APP_API}livros/filtrar?${query}`, { 
+        method: "GET",
+      });
+      return await livros.json();
     },
 };
 export default PersonFetch;

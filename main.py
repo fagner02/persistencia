@@ -116,15 +116,19 @@ def compactar():
         return Response(status_code=HTTPStatus.INTERNAL_SERVER_ERROR, content=str(e))
 
 @app.get("/livros/filtrar")
-def filtrar(genero: str = None, autor: str = None):
+def filtrar(id: str = None, titulo: str = None, ano: str = None, editora: str = None, genero: str = None, autor: str = None):
     try: 
         with open(path, mode='r', newline='', encoding='utf-8') as file:
-            reader = csv.reader(file)
-            filtrados = [
-                row for row in reader if 
-                (genero is None or row[4].strip().lower() == genero.strip().lower()) and 
-                (autor is None or row[2].strip().lower() == autor.strip().lower()) 
-            ]
-            return {"filtrados": filtrados}
+            reader = pd.read_csv(file)
+            teste = reader [reader['id'] == int(id) & reader['titulo'] == titulo &
+                    reader['autor'] == autor & reader['ano'] == int(ano) & 
+                    reader['genero'] == genero & reader['editora'] == editora]
+            print(teste)
+            return Response(
+                content=teste.to_json(orient="records"),
+                media_type="json",
+                status_code=HTTPStatus.OK,
+             )
+
     except Exception as e:
         return Response(status_code=HTTPStatus.INTERNAL_SERVER_ERROR, content=str(e))

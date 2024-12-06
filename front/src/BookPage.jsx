@@ -4,7 +4,7 @@ import TrashIcon from "./Icons/TrashIcon";
 import EditIcon from "./Icons/EditIcon";
 import RefreshIcon from "./Icons/RefreshIcon";
 import CheckIcon from "./Icons/CheckIcon";
-import JSZip from "jszip";
+
 
 export class BookPage extends Component {
   constructor(/**@type {any}*/ props) {
@@ -13,6 +13,13 @@ export class BookPage extends Component {
       books: /**@type {import("./types").Livro[]}*/ ([]),
       children: [],
       selected: /**@type {number[]}*/ ([]),
+      bookCount: 0,
+      id: "",
+      titulo: "",
+      autor: "",
+      editora: "",
+      ano: "",
+      genero: "",
     };
     this.willUnmount = false;
   }
@@ -25,9 +32,31 @@ export class BookPage extends Component {
     { name: "editora", type: "text" },
   ];
   refresh() {
-    BookFetch.getAll().then((res) => {
+    if (this.state.id != "" || 
+        this.state.titulo != "" ||
+        this.state.autor != "" ||
+        this.state.ano != "" ||
+        this.state.genero != "" ||
+        this.state.editora != "") {
+          BookFetch.filtrarLivros(this.state.id, this.state.titulo,
+            this.state.autor, this.state.genero, this.state.editora, this.state.ano).then((res) => {
+              if (!this.willUnmount) {
+                //this.setState({ books: res });
+                console.log(res);
+              }
+            });
+        } 
+      else {
+        BookFetch.getAll().then((res) => {
+          if (!this.willUnmount) {
+            this.setState({ books: res });
+          }
+          console.log(res);
+        });
+      }
+    BookFetch.getQtd().then((res) => {
       if (!this.willUnmount) {
-        this.setState({ books: res });
+        this.setState({ bookCount: res });
       }
     });
   }
@@ -279,7 +308,13 @@ export class BookPage extends Component {
         <h1>Hello</h1>
         <h3>This is the home page</h3>
         <div className="actions">
-          <div style={{ display: "flex" }}>
+          <div style={{ display: "flex", gap: "10px" }}>
+            <h5>Total: {this.state.bookCount}</h5>
+            <button
+              onClick={(e) => {
+                BookFetch.compactar();
+              }}>zip
+            </button>
             <button
               onClick={(e) => {
                 this.refresh();
@@ -304,6 +339,42 @@ export class BookPage extends Component {
               }}>
               Delete
             </button>
+            <div className="dropdown">
+              <button className="dropbtn">Filtrar</button>
+              <div className="dropdown-content">
+                <input type="text" placeholder="ID" id="id" onInput={(e) => {
+                  this.setState({id: `${e.currentTarget.value}`}); 
+                  console.log(this.state.id);
+                  this.refresh();
+                  const test = `${e.currentTarget.value}`;
+                  console.log(test);
+                }}></input>
+                <input type="text" placeholder="Titulo" id="titulo" onInput={(e) => {
+                  this.setState({titulo: e.currentTarget.value});
+          
+                  setTimeout(() => {
+                    console.log(this.state.titulo);
+                    this.refresh();
+                  }, 1000);
+                }}></input>
+                <input type="text" placeholder="Autor" id="autor" onInput={(e) => {
+                  this.setState({autor: e.currentTarget.value});
+                  this.refresh();
+                }}></input>
+                <input type="text" placeholder="Ano" id="ano" onInput={(e) => {
+                  this.setState({ano: e.currentTarget.value});
+                  this.refresh();
+                }}></input>
+                <input type="text" placeholder="Genero" id="genero" onInput={(e) => {
+                  this.setState({genero: e.currentTarget.value});
+                  this.refresh();
+                }}></input>
+                <input type="text" placeholder="Editora" id="editora" onInput={(e) => {
+                  this.setState({editora: e.currentTarget.value});
+                  this.refresh();
+                }}></input>
+              </div>
+            </div> 
           </div>
           <button
             id="uncheck"

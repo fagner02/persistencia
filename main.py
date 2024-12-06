@@ -1,8 +1,7 @@
-import csv
 from http import HTTPStatus
 from typing import List
-from fastapi import FastAPI, Response
-from starlette.responses import FileResponse
+from fastapi import FastAPI
+from fastapi.responses import Response, FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import pandas as pd
@@ -97,38 +96,66 @@ def deleteMultiple(request: DeleteMultipleRequest):
     data.to_csv(path, index=False)
     return Response(status_code=HTTPStatus.NO_CONTENT)
 
+
 @app.get("/livros/quantidade")
 def quantidade():
     try:
-        df = pd.read_csv(path)  
-        return {"quantidade": len(df)}
+        df = pd.read_csv(path)
+        return Response(content=f"{len(df)}")
     except Exception as e:
         return Response(status_code=HTTPStatus.INTERNAL_SERVER_ERROR, content=str(e))
+
 
 @app.get("/livros/compactar")
 def compactar():
     try:
-        zip_file = 'dados.zip'
-        with zipfile.ZipFile(zip_file, 'w') as zip:
+        zip_file = "dados.zip"
+        with zipfile.ZipFile(zip_file, "w") as zip:
             zip.write(path, arcname=os.path.basename(path))
-            return FileResponse(zip_file, media_type='application/zip', filename=zip_file)
+            return FileResponse(
+                zip_file, media_type="application/zip", filename=zip_file
+            )
     except Exception as e:
         return Response(status_code=HTTPStatus.INTERNAL_SERVER_ERROR, content=str(e))
 
+
 @app.get("/livros/filtrar")
-def filtrar(id: str = None, titulo: str = None, ano: str = None, editora: str = None, genero: str = None, autor: str = None):
-    try: 
-        with open(path, mode='r', newline='', encoding='utf-8') as file:
+def filtrar(
+    id: str = None,
+    titulo: str = None,
+    ano: str = None,
+    editora: str = None,
+    genero: str = None,
+    autor: str = None,
+):
+    try:
+        with open(path, mode="r", newline="", encoding="utf-8") as file:
             reader = pd.read_csv(file)
-            teste = reader [reader['id'] == int(id) & reader['titulo'] == titulo &
-                    reader['autor'] == autor & reader['ano'] == int(ano) & 
-                    reader['genero'] == genero & reader['editora'] == editora]
-            print(teste)
+            teste = reader[
+                (id == None or reader["id"] == int(id))
+                & (ano == None or reader["ano"] == int(ano))
+                & (
+                    titulo == None
+                    or reader["titulo"].str.lower().str.contains(titulo.lower())
+                )
+                & (
+                    autor == None
+                    or reader["autor"].str.lower().str.contains(autor.lower())
+                )
+                & (
+                    genero == None
+                    or reader["genero"].str.lower().str.contains(genero.lower())
+                )
+                & (
+                    editora == None
+                    or reader["editora"].str.lower().str.contains(editora.lower())
+                )
+            ]
             return Response(
                 content=teste.to_json(orient="records"),
                 media_type="json",
                 status_code=HTTPStatus.OK,
-             )
+            )
 
     except Exception as e:
         return Response(status_code=HTTPStatus.INTERNAL_SERVER_ERROR, content=str(e))

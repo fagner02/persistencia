@@ -319,12 +319,14 @@ export class BookPage extends Component {
         <h1>Hello</h1>
         <h3>This is the home page</h3>
         <div className="actions">
-          <div style={{ display: "flex", gap: "10px" }}>
+          <div style={{ display: "flex", gap: "10px", height: "40px" }}>
             <div
               style={{
                 border: "1px solid black",
                 borderRadius: "10px",
                 padding: "0px 10px",
+                display: "grid",
+                placeContent: "center",
               }}>
               <h5>Total: {this.state.bookCount}</h5>
             </div>

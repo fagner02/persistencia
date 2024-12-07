@@ -33,12 +33,12 @@ export class BookPage extends Component {
   ];
   refresh() {
     if (
-      this.state.id != "" ||
-      this.state.titulo != "" ||
-      this.state.autor != "" ||
-      this.state.ano != "" ||
-      this.state.genero != "" ||
-      this.state.editora != ""
+      this.state.id !== "" ||
+      this.state.titulo !== "" ||
+      this.state.autor !== "" ||
+      this.state.ano !== "" ||
+      this.state.genero !== "" ||
+      this.state.editora !== ""
     ) {
       BookFetch.filtrarLivros(
         this.state.id,
@@ -106,7 +106,7 @@ export class BookPage extends Component {
         button.forEach((x) => {
           x.style.scale = "1";
           x.style.opacity = "1";
-          if (x.id == "delete-selected") {
+          if (x.id === "delete-selected") {
             x.style.display = "block";
           }
         });
@@ -130,7 +130,7 @@ export class BookPage extends Component {
     button.forEach((x) => {
       x.style.scale = "0";
       x.style.opacity = "0";
-      if (x.id == "delete-selected") {
+      if (x.id === "delete-selected") {
         x.style.display = "none";
       }
     });

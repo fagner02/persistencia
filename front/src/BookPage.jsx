@@ -4,6 +4,7 @@ import TrashIcon from "./Icons/TrashIcon";
 import EditIcon from "./Icons/EditIcon";
 import RefreshIcon from "./Icons/RefreshIcon";
 import CheckIcon from "./Icons/CheckIcon";
+import ZipIcon from "./Icons/ZipIcon";
 
 export class BookPage extends Component {
   constructor(/**@type {any}*/ props) {
@@ -333,8 +334,9 @@ export class BookPage extends Component {
             <button
               onClick={(e) => {
                 BookFetch.compactar();
-              }}>
-              zip
+              }}
+              style={{ display: "flex", alignItems: "center" }}>
+              <ZipIcon size="20px" color="white"></ZipIcon>
             </button>
             <button
               onClick={(e) => {

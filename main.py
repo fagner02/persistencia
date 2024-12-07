@@ -131,7 +131,7 @@ def filtrar(
     try:
         with open(path, mode="r", newline="", encoding="utf-8") as file:
             reader = pd.read_csv(file)
-            teste = reader[
+            filter = reader[
                 (id == None or reader["id"] == int(id))
                 & (ano == None or reader["ano"] == int(ano))
                 & (
@@ -152,7 +152,7 @@ def filtrar(
                 )
             ]
             return Response(
-                content=teste.to_json(orient="records"),
+                content=filter.to_json(orient="records"),
                 media_type="json",
                 status_code=HTTPStatus.OK,
             )

@@ -84,15 +84,22 @@ const PersonFetch = {
     /** @type {string} */ titulo,
     /** @type {string} */ autor,
     /** @type {string} */ genero,
+    ///** @type {string} */ ano
     /** @type {string} */ editora,
-    /** @type {string} */ ano
+    /** @type {string} */ min_ano,
+    /** @type {string} */ max_ano
+    
   ) => {
-    let query = id === "" ? "" : `id=${id}&`;
-    query += titulo === "" ? "" : `titulo=${titulo}&`;
-    query += autor === "" ? "" : `autor=${autor}&`;
-    query += genero === "" ? "" : `genero=${genero}&`;
-    query += editora === "" ? "" : `editora=${editora}&`;
-    query += ano === "" ? "" : `ano=${ano}&`;
+    let query = id === "" ? "" : `id=${id}`;
+    query += titulo === "" ? "" : `&titulo=${titulo}`;
+    query += autor === "" ? "" : `&autor=${autor}`;
+    query += genero === "" ? "" : `&genero=${genero}`;
+    //query += ano === "" ? "" : `ano=${ano}&`;
+    query += editora === "" ? "" : `&editora=${editora}`;
+    query += min_ano !== "" ? `&min_ano=${min_ano}` : "";
+    query += max_ano !== "" ? `&max_ano=${max_ano}` : "";
+
+    //console.log(`URL: ${process.env.REACT_APP_API}livros/filtrar?${query}`);
     const livros = await fetch(
       `${process.env.REACT_APP_API}livros/filtrar?${query}`,
       {

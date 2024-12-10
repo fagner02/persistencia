@@ -123,17 +123,20 @@ def compactar():
 def filtrar(
     id: str = None,
     titulo: str = None,
-    ano: str = None,
     editora: str = None,
     genero: str = None,
+    #ano: str = None,
     autor: str = None,
+    min_ano: str = None,
+    max_ano: str = None,
 ):
     try:
-        with open(path, mode="r", newline="", encoding="utf-8") as file:
-            reader = pd.read_csv(file)
+            print(min_ano, max_ano)
+            reader = pd.read_csv(path)
             filter = reader[
-                (id == None or reader["id"] == int(id))
-                & (ano == None or reader["ano"] == int(ano))
+                (id == None or reader["id"] == int(id)) 
+                & (min_ano == None or reader["ano"] >= int(min_ano))
+                & (max_ano == None or reader["ano"] <= int(max_ano))
                 & (
                     titulo == None
                     or reader["titulo"].str.lower().str.contains(titulo.lower())
@@ -151,11 +154,13 @@ def filtrar(
                     or reader["editora"].str.lower().str.contains(editora.lower())
                 )
             ]
+
             return Response(
                 content=filter.to_json(orient="records"),
-                media_type="json",
+                media_type="application/json",
                 status_code=HTTPStatus.OK,
             )
-
+       
     except Exception as e:
+        print(f"Erro: {e}")
         return Response(status_code=HTTPStatus.INTERNAL_SERVER_ERROR, content=str(e))

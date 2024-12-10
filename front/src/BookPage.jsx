@@ -18,8 +18,10 @@ export class BookPage extends Component {
       titulo: "",
       autor: "",
       editora: "",
-      ano: "",
+      //ano: "",
       genero: "",
+      minAno: "",
+      maxAno: "",
     };
     this.willUnmount = false;
   }
@@ -27,18 +29,22 @@ export class BookPage extends Component {
     { name: "id", type: "number" },
     { name: "titulo", type: "text" },
     { name: "autor", type: "text" },
-    { name: "ano", type: "number" },
+    //{ name: "ano", type: "number" },
     { name: "genero", type: "text" },
     { name: "editora", type: "text" },
+    { name: "min_ano", type: "number" },
+    { name: "max_ano", type: "number" },
   ];
   refresh() {
     if (
       this.state.id !== "" ||
       this.state.titulo !== "" ||
       this.state.autor !== "" ||
-      this.state.ano !== "" ||
+      //this.state.ano !== "" ||
       this.state.genero !== "" ||
-      this.state.editora !== ""
+      this.state.editora !== "" ||
+      this.state.minAno !== "" ||
+      this.state.maxAno !== ""
     ) {
       BookFetch.filtrarLivros(
         this.state.id,
@@ -46,7 +52,9 @@ export class BookPage extends Component {
         this.state.autor,
         this.state.genero,
         this.state.editora,
-        this.state.ano
+        //this.state.ano,
+        this.state.minAno,
+        this.state.maxAno
       ).then((res) => {
         if (!this.willUnmount) {
           this.setState({ books: res });
@@ -336,7 +344,7 @@ export class BookPage extends Component {
                 BookFetch.compactar();
               }}
               style={{ display: "flex", alignItems: "center" }}>
-              <ZipIcon size="20px" color="white"></ZipIcon>
+              <ZipIcon size="24px" color="white"></ZipIcon>
             </button>
             <button
               onClick={(e) => {
@@ -392,7 +400,7 @@ export class BookPage extends Component {
                       this.refresh();
                     }, 0);
                   }}></input>
-                <input
+                {/* <input
                   type="text"
                   placeholder="Ano"
                   id="ano"
@@ -401,7 +409,7 @@ export class BookPage extends Component {
                     setTimeout(() => {
                       this.refresh();
                     }, 0);
-                  }}></input>
+                  }}></input> */}
                 <input
                   type="text"
                   placeholder="Genero"
@@ -422,6 +430,31 @@ export class BookPage extends Component {
                       this.refresh();
                     }, 0);
                   }}></input>
+                <input
+                  type="number"
+                  placeholder="AnoMin"
+                  id="minAno"
+                  onInput={(e) => {
+                    this.setState({ minAno: e.currentTarget.value });
+                    setTimeout(() => {
+                      this.refresh();
+                    }, 0);
+                  }}
+                ></input>
+                <input
+                  type="number"
+                  placeholder="AnoMax"
+                  id="maxAno"
+                  onInput={(e) => {
+                    this.setState({ maxAno: e.currentTarget.value });
+                    // const value = e.currentTarget.value;
+                    // this.setState({ minAno: value });
+                    // console.log(`minAno: ${value}`);
+                    setTimeout(() => {
+                      this.refresh();
+                    }, 0);
+                  }}
+                ></input>
               </div>
             </div>
           </div>

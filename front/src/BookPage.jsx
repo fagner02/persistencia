@@ -31,8 +31,7 @@ export class BookPage extends Component {
     { name: "autor", type: "text" },
     { name: "genero", type: "text" },
     { name: "editora", type: "text" },
-    { name: "min_ano", type: "number" },
-    { name: "max_ano", type: "number" },
+    { name: "ano", type: "number" },
   ];
   refresh() {
     if (

@@ -18,10 +18,10 @@ export class BookPage extends Component {
       titulo: "",
       autor: "",
       editora: "",
-      //ano: "",
       genero: "",
       minAno: "",
       maxAno: "",
+      hash: "",
     };
     this.willUnmount = false;
   }
@@ -29,7 +29,6 @@ export class BookPage extends Component {
     { name: "id", type: "number" },
     { name: "titulo", type: "text" },
     { name: "autor", type: "text" },
-    //{ name: "ano", type: "number" },
     { name: "genero", type: "text" },
     { name: "editora", type: "text" },
     { name: "min_ano", type: "number" },
@@ -40,7 +39,6 @@ export class BookPage extends Component {
       this.state.id !== "" ||
       this.state.titulo !== "" ||
       this.state.autor !== "" ||
-      //this.state.ano !== "" ||
       this.state.genero !== "" ||
       this.state.editora !== "" ||
       this.state.minAno !== "" ||
@@ -52,7 +50,6 @@ export class BookPage extends Component {
         this.state.autor,
         this.state.genero,
         this.state.editora,
-        //this.state.ano,
         this.state.minAno,
         this.state.maxAno
       ).then((res) => {
@@ -439,8 +436,7 @@ export class BookPage extends Component {
                     setTimeout(() => {
                       this.refresh();
                     }, 0);
-                  }}
-                ></input>
+                  }}></input>
                 <input
                   type="number"
                   placeholder="AnoMax"
@@ -453,10 +449,19 @@ export class BookPage extends Component {
                     setTimeout(() => {
                       this.refresh();
                     }, 0);
-                  }}
-                ></input>
+                  }}></input>
               </div>
             </div>
+            <button
+              style={{ background: "hsl(210, 60%,50%)", border: "none" }}
+              onClick={() => {
+                BookFetch.getHash().then((res) => {
+                  this.setState({ hash: res });
+                  window.alert(res);
+                });
+              }}>
+              Hash
+            </button>
           </div>
           <button
             id="uncheck"

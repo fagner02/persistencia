@@ -88,7 +88,6 @@ const PersonFetch = {
     /** @type {string} */ editora,
     /** @type {string} */ min_ano,
     /** @type {string} */ max_ano
-    
   ) => {
     let query = id === "" ? "" : `id=${id}`;
     query += titulo === "" ? "" : `&titulo=${titulo}`;
@@ -108,5 +107,13 @@ const PersonFetch = {
     );
     return await livros.json();
   },
+  getHash:
+    /**@return {string} */
+    async () => {
+      let res = await fetch(`${process.env.REACT_APP_API}livros/hash`, {
+        method: "GET",
+      });
+      return (await res.json()).hash_sha256;
+    },
 };
 export default PersonFetch;
